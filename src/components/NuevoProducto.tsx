@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //Actions de redux
 import { crearNuevoProductoAction } from "../actions/productoActions";
+import { Producto } from "../interfaces/IProducto";
 
 const NuevoProducto = () => {
+  // State del componente
+  const [nombre, guardarNombre] = useState("");
+  const [precio, guardarPrecio] = useState(0);
+
   // Utilizar usedispatch crea una funcion
   const dispatch = useDispatch();
 
   // usa el dispatch para comunicarse con las acciones => Manda a llamar el action
-  const agregarProducto = () => dispatch(crearNuevoProductoAction());
+  const agregarProducto = (producto: Producto) =>
+    dispatch(crearNuevoProductoAction(producto));
 
   const handleSubmitNuevoProducto = (e: any) => {
     e.preventDefault();
     //Validar formulario
-
+    if (nombre.trim() === "" || precio <= 0) {
+      return;
+    }
     //Limpiar errores
 
     //Crear el nuevo producto
-    agregarProducto();
+    agregarProducto({
+      nombre,
+      precio,
+    });
   };
 
   return (
@@ -37,6 +48,8 @@ const NuevoProducto = () => {
                   className="form-control"
                   placeholder="Nombre Producto"
                   name="nombre"
+                  value={nombre}
+                  onChange={(e) => guardarNombre(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -46,6 +59,8 @@ const NuevoProducto = () => {
                   className="form-control"
                   placeholder="Precio Producto"
                   name="precio"
+                  value={precio}
+                  onChange={(e) => guardarPrecio(Number(e.target.value))}
                 />
               </div>
               <button

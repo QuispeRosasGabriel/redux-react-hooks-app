@@ -1,3 +1,4 @@
+import { Producto } from "../interfaces/IProducto";
 import {
   AGREGAR_PRODUCTO,
   AGREGAR_PRODUCTO_ERROR,
@@ -5,8 +6,8 @@ import {
 } from "../types";
 
 // Crear nuevos productos
-export const crearNuevoProductoAction = () => {
+export const crearNuevoProductoAction = (producto: Producto) => {
   return () => {
-    console.log("desde action");
+    console.log("ver producto", producto);
   };
 };
