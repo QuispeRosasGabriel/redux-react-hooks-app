@@ -6,6 +6,10 @@ import Productos from "./components/Productos";
 import NuevoProducto from "./components/NuevoProducto";
 import EditarProducto from "./components/EditarProducto";
 
+//REDUX
+import { Provider } from "react-redux";
+import store from "./store";
+
 function App() {
   return (
     <Router>
