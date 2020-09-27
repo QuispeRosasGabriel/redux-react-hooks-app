@@ -3,12 +3,15 @@ import {
   AGREGAR_PRODUCTO,
   AGREGAR_PRODUCTO_ERROR,
   AGREGAR_PRODUCTO_EXITO,
+  COMENZAR_DESCARGA_PRODUCTOS,
+  DESCARGA_PRODUCTOS_ERROR,
+  DESCARGA_PRODUCTOS_EXITO,
 } from "../types";
 
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
 
-// Crear nuevos productos
+// Crear nuevos productos =====================================
 export const crearNuevoProductoAction = (producto: Producto) => {
   return async (dispatch: any) => {
     dispatch(agregarProducto());
@@ -49,4 +52,16 @@ const agregarProductoExito = (producto: Producto) => ({
 const agregarProductoError = (value: boolean) => ({
   type: AGREGAR_PRODUCTO_ERROR,
   payload: value,
+});
+
+// Descargar productos de la base de datos  =================
+export const obtenerProductosAction = () => {
+  return async (dispatch: any) => {
+    dispatch(descargarProductos());
+  };
+};
+
+const descargarProductos = () => ({
+  type: COMENZAR_DESCARGA_PRODUCTOS,
+  payload: true,
 });
