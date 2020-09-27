@@ -29,6 +29,16 @@
       "nombre": "Cuaderno",
       "precio": 100,
       "id": 6
+    },
+    {
+      "nombre": "cuaderno",
+      "precio": 100,
+      "id": 7
+    },
+    {
+      "nombre": "cuaderno",
+      "precio": 100,
+      "id": 8
     }
   ]
 }

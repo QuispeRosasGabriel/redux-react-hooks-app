@@ -13,6 +13,10 @@ const NuevoProducto = () => {
   // Utilizar usedispatch crea una funcion
   const dispatch = useDispatch();
 
+  // Acceder al state del store
+  const cargando = useSelector((state: any) => state.productos.loading);
+  console.log(cargando);
+
   // usa el dispatch para comunicarse con las acciones => Manda a llamar el action
   const agregarProducto = (producto: Producto) =>
     dispatch(crearNuevoProductoAction(producto));
@@ -23,7 +27,6 @@ const NuevoProducto = () => {
     if (nombre.trim() === "" || precio <= 0) {
       return;
     }
-    //Limpiar errores
 
     //Crear el nuevo producto
     agregarProducto({
@@ -70,6 +73,7 @@ const NuevoProducto = () => {
                 Agregar
               </button>
             </form>
+            {cargando && <p>Cargando...</p>}
           </div>
         </div>
       </div>
