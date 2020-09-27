@@ -1,4 +1,3 @@
-import { Action } from "redux";
 import {
   AGREGAR_PRODUCTO,
   AGREGAR_PRODUCTO_ERROR,
@@ -12,8 +11,26 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action: Action) {
+export default function (state = initialState, action: any) {
   switch (action.type) {
+    case AGREGAR_PRODUCTO:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case AGREGAR_PRODUCTO_EXITO:
+      return {
+        ...state,
+        loading: false,
+        productos: [...state.productos, action.payload],
+      };
+
+    case AGREGAR_PRODUCTO_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
