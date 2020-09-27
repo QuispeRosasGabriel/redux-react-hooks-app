@@ -24,6 +24,11 @@
       "nombre": "Jugo de Fresa",
       "precio": "200",
       "id": 5
+    },
+    {
+      "nombre": "Cuaderno",
+      "precio": 100,
+      "id": 6
     }
   ]
 }
