@@ -15,7 +15,7 @@ const NuevoProducto = () => {
 
   // Acceder al state del store
   const cargando = useSelector((state: any) => state.productos.loading);
-  console.log(cargando);
+  const error = useSelector((state: any) => state.productos.error);
 
   // usa el dispatch para comunicarse con las acciones => Manda a llamar el action
   const agregarProducto = (producto: Producto) =>
@@ -74,6 +74,11 @@ const NuevoProducto = () => {
               </button>
             </form>
             {cargando && <p>Cargando...</p>}
+            {error && (
+              <p className="alert alert-danger p-2 mt-4 text-center">
+                Hubo un error...
+              </p>
+            )}
           </div>
         </div>
       </div>
