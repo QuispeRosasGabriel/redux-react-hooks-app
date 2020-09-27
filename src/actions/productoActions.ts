@@ -1,10 +1,12 @@
-import clienteAxios from "../config/axios";
 import { Producto } from "../interfaces/IProducto";
 import {
   AGREGAR_PRODUCTO,
   AGREGAR_PRODUCTO_ERROR,
   AGREGAR_PRODUCTO_EXITO,
 } from "../types";
+
+import clienteAxios from "../config/axios";
+import Swal from "sweetalert2";
 
 // Crear nuevos productos
 export const crearNuevoProductoAction = (producto: Producto) => {
@@ -15,10 +17,19 @@ export const crearNuevoProductoAction = (producto: Producto) => {
       await clienteAxios.post("/productos", producto);
       // Si todo sale bien, actualiza state
       dispatch(agregarProductoExito(producto));
+      // Alerta
+      Swal.fire("Correcto", "El producto se agregó correctamente", "success");
     } catch (error) {
       console.log(error);
       // Si hay un error cambiar el state
       dispatch(agregarProductoError(true));
+
+      //Alerta de error
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error",
+        text: "Hubo un error, intenta de nuevo",
+      });
     }
   };
 };
