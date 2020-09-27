@@ -3,6 +3,7 @@ import React, { Fragment, useEffect } from "react";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerProductosAction } from "../actions/productoActions";
+import Producto from "./Producto";
 
 const Productos = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ const Productos = () => {
     const cargarProductos = () => dispatch(obtenerProductosAction());
     cargarProductos();
   }, []);
+
+  // Obtener el state
+  const productos = useSelector((state: any) => state.productos.productos);
+  console.log(productos);
 
   return (
     <Fragment>
@@ -24,7 +29,13 @@ const Productos = () => {
             <th scope="col">Acciones</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {productos.length === 0
+            ? "No hay productos"
+            : productos.map((producto: any) => (
+                <Producto key={producto.id} producto={producto} />
+              ))}
+        </tbody>
       </table>
     </Fragment>
   );
