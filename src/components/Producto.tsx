@@ -25,7 +25,7 @@ const Producto = ({ producto }: any) => {
       </td>
       <td className="acciones">
         <Link to={`/productos/editar/${id}`} className="btn btn-primary mr-2">
-          Editar{" "}
+          Editar
         </Link>
         <button
           type="button"
