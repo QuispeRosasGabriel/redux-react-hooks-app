@@ -43,9 +43,13 @@ const Producto = ({ producto }: any) => {
         <span className="font-weight-bold">s/. {precio}</span>
       </td>
       <td className="acciones">
-        <Link to={`/productos/editar/${id}`} className="btn btn-primary mr-2">
+        <button
+          type="button"
+          onClick={() => redireccionarEdicion(producto)}
+          className="btn btn-primary mr-2"
+        >
           Editar
-        </Link>
+        </button>
         <button
           type="button"
           className="btn btn-danger"
