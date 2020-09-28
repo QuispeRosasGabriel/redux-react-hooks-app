@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 // Redux
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ const Producto = ({ producto }: any) => {
   const { nombre, precio, id } = producto;
 
   const dispatch = useDispatch();
+  const history = useHistory(); // Habilitar history para redireccion
 
   // Confirmar si desea eliminar
   const confirmEliminarProducto = (id: number) => {
@@ -28,6 +29,11 @@ const Producto = ({ producto }: any) => {
         dispatch(eliminarProductoAction(id));
       }
     });
+  };
+
+  // Funcion que redirige de forma programada
+  const redireccionarEdicion = (producto: any) => {
+    history.push(`productos/editar/${producto.id}`);
   };
 
   return (
