@@ -95,6 +95,9 @@ export const eliminarProductoAction = (id: number) => {
     try {
       const resultado = await clienteAxios.delete(`/productos/${id}`);
       dispatch(eliminarProductoExito());
+
+      // Si se elimina, mostrar alerta
+      Swal.fire("Eliminado!", "Archivo eliminado con éxito.", "success");
     } catch (error) {
       eliminarProductoError(true);
     }
