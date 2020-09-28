@@ -123,11 +123,11 @@ const eliminarProductoError = (value: boolean) => ({
 
 export const obtenerProductoEditar = (producto: any) => {
   return (dispatch: any) => {
-    dispatch(obtenerProductoAction(producto));
+    dispatch(obtenerProductoEditarAction(producto));
   };
 };
 
-const obtenerProductoAction = (producto: any) => ({
+const obtenerProductoEditarAction = (producto: any) => ({
   type: OBTENER_PRODUCTO_EDITAR,
   payload: producto,
 });
