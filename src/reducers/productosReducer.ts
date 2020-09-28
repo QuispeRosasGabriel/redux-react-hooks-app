@@ -8,6 +8,7 @@ import {
   OBTENER_PRODUCTO_ELIMINAR,
   PRODUCTO_ELIMINADO_EXITO,
   PRODUCTO_ELIMINADO_ERROR,
+  OBTENER_PRODUCTO_EDITAR,
 } from "../types";
 
 //CADA REDUCER TIENE SU PROPIO STATE
@@ -59,6 +60,11 @@ export default function (state = initialState, action: any) {
           (producto: any) => producto.id !== state.productoEliminar
         ),
         productoEliminar: null,
+      };
+    case OBTENER_PRODUCTO_EDITAR:
+      return {
+        ...state,
+        productoEditar: action.payload,
       };
 
     default:
