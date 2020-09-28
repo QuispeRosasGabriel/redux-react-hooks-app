@@ -44,11 +44,6 @@
       "nombre": "Libro",
       "precio": 1000,
       "id": 9
-    },
-    {
-      "nombre": "Jugo de piña",
-      "precio": 12,
-      "id": 10
     }
   ]
 }
