@@ -4,6 +4,7 @@ import {
   AGREGAR_PRODUCTO_ERROR,
   AGREGAR_PRODUCTO_EXITO,
   COMENZAR_DESCARGA_PRODUCTOS,
+  COMENZAR_EDICION_PRODUCTO,
   DESCARGA_PRODUCTOS_ERROR,
   DESCARGA_PRODUCTOS_EXITO,
   OBTENER_PRODUCTO_EDITAR,
@@ -129,5 +130,26 @@ export const obtenerProductoEditar = (producto: any) => {
 
 const obtenerProductoEditarAction = (producto: any) => ({
   type: OBTENER_PRODUCTO_EDITAR,
+  payload: producto,
+});
+
+// Edita y registra en la api y el state =====
+export const editarProductoAction = (producto: any) => {
+  return async (dispatch: any) => {
+    dispatch(editarProducto(producto));
+
+    try {
+      const resultado = await clienteAxios.put(
+        `/productos/${producto.id}`,
+        producto
+      );
+
+      console.log(resultado);
+    } catch (error) {}
+  };
+};
+
+const editarProducto = (producto: any) => ({
+  type: COMENZAR_EDICION_PRODUCTO,
   payload: producto,
 });
