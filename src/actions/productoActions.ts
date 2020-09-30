@@ -143,8 +143,6 @@ export const editarProductoAction = (producto: any) => {
         `/productos/${producto.id}`,
         producto
       );
-
-      console.log(resultado);
     } catch (error) {}
   };
 };

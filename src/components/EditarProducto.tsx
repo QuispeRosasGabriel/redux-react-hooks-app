@@ -9,6 +9,7 @@ const EditarProducto = () => {
     precio: "",
   });
 
+  const dispatch = useDispatch();
   const producto = useSelector((state: any) => state.productos.productoEditar);
   // if (!producto) return null;
 
@@ -29,6 +30,7 @@ const EditarProducto = () => {
 
   const handleSubmitEditarProducto = (e: any) => {
     e.preventDefault();
+    dispatch(editarProductoAction(producto));
   };
 
   return (
