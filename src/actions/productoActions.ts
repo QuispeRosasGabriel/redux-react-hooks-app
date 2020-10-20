@@ -9,6 +9,7 @@ import {
   DESCARGA_PRODUCTOS_EXITO,
   OBTENER_PRODUCTO_EDITAR,
   OBTENER_PRODUCTO_ELIMINAR,
+  PRODUCTO_EDITADO_EXITO,
   PRODUCTO_ELIMINADO_ERROR,
   PRODUCTO_ELIMINADO_EXITO,
 } from "../types";
@@ -143,6 +144,7 @@ export const editarProductoAction = (producto: any) => {
         `/productos/${producto.id}`,
         producto
       );
+        dispatch(editarProductoExito(producto));
     } catch (error) {}
   };
 };
@@ -151,3 +153,8 @@ const editarProducto = (producto: any) => ({
   type: COMENZAR_EDICION_PRODUCTO,
   payload: producto,
 });
+
+const editarProductoExito = (producto: any) => ({
+  type: PRODUCTO_EDITADO_EXITO,
+  payload: producto
+})
